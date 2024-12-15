@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>谁做PPT</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        #result {
+            font-size: 24px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s ease-in-out;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1></h1>
+        <div id="result">点击按钮开始点名</div>
+        <button onclick="callName()">点名</button>
+    </div>
+
+    <script>
+        // 学生名单数组
+        const students = [
+ '李佳润','纪常乐','潘岩'
+        ];
+
+        let intervalId;
+
+        function callName() {
+            clearInterval(intervalId); // 清除可能存在的旧定时器
+            let currentStudentIndex = Math.floor(Math.random() * students.length);
+            const resultDiv = document.getElementById('result');
+
+            // 开始滚动效果
+            intervalId = setInterval(() => {
+                currentStudentIndex = (currentStudentIndex + 1) % students.length;
+                resultDiv.innerText = `当前滚动的学生是：${students[currentStudentIndex]}`;
+            }, 100); // 每100毫秒更换一个学生名字
+
+            // 停止滚动并显示最终结果
+            setTimeout(() => {
+                clearInterval(intervalId);
+                const finalStudent = students[Math.floor(Math.random() * students.length)];
+                resultDiv.innerText = `做PPT的学生是：${finalStudent}`;
+                resultDiv.style.opacity = 0;
+                resultDiv.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    resultDiv.style.opacity = 1;
+                    resultDiv.style.transform = 'translateY(0)';
+                }, 10);
+            }, 3000); // 滚动3秒钟后停止
+        }
+    </script>
+</body>
+</html>
