@@ -87,7 +87,7 @@
             intervalId = setInterval(() => {
                 currentStudentIndex = (currentStudentIndex + 1) % students.length;
                 resultDiv.innerText = `当前滚动的学生是：${students[currentStudentIndex]}`;
-            }, 100); // 每100毫秒更换一个学生名字
+            }, 100); // 每10毫秒更换一个学生名字
 
             // 停止滚动并显示最终结果
             setTimeout(() => {
