@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>谁做PPT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>被点到的同学是</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,50 +15,65 @@
             height: 100vh;
             background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
             color: #333;
+            text-align: center;
         }
         .container {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
         }
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
         }
         #result {
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             opacity: 0;
             transform: translateY(-20px);
             transition: all 0.5s ease-in-out;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 18px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         button:hover {
             background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        button:active {
+            transform: translateY(2px);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1></h1>
+        <h1>谁做PPT</h1>
         <div id="result">点击按钮开始点名</div>
         <button onclick="callName()">点名</button>
     </div>
 
     <script>
-        // 学生名单数组
+        // 新的学生名单
         const students = [
- '李佳润','纪常乐','潘岩'
+            '游淼', '王雯静', '刘佳淇', '刘嘉祺', '华智豪', '孙晓灿', '吴毅', '张琪琪', '辛佳含', '周小川',
+            '范新昌', '骆晋', '柴垚', '聂珍珍', '常佥佥', '于淼', '马鲁英', '王竞怡', '卢星宇', '冯元庆',
+            '冯建博', '刘芳', '刘璇', '许嘉蕊', '张长胜', '李子熙', '李京韬', '李佳润', '李梦洲', '李璐',
+            '陈飞宇', '胡子玥', '郝雨', '潘岩', '薛疆封', '王旭森', '王冠博', '王烨帆', '王淼', '卢春铭',
+            '刘京元', '纪常乐', '张仕祺', '张宏博', '李嘉诚', '陈傲迪', '姜新颖', '徐甜', '曹梦媛', '淡振伟',
+            '盘浩翔', '龚敬媛', '韩梦甜', '魏煜凯'
         ];
 
         let intervalId;
